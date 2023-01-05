@@ -9,7 +9,7 @@ const $api = axios.create({
     return status === 200 || status === 201;
   },
   withCredentials: true, // 모든 요청에 쿠키가 자동으로 연결되도록 함
-  baseURL: `${API_URL}/ api/auth/google`,
+  baseURL: `${API_URL}/api`,
 });
 
 // 서버에 요청할 때마다 쿠키에 저장된 현재 "access"토큰을 꺼내 인증을 위해 서버에 보냅니다.
@@ -44,8 +44,8 @@ $api.interceptors.response.use(
         );
         Cookies.remove("access_token");
         Cookies.set("access_token", response.data.user.accessToken);
-        // к слову если не отправить данные внутри ответа от сервера, помимо неполучения токенов, на клиенте в интерцепторе не произойдет повторный запрос,
-        // даже если статус ответа 200
+        // 참고로, 응답 상태가 200인 경우에도 토큰을 받지 못하는 것 외에도
+        // 서버로부터 응답 내에 데이터를 보내지 않으면 인터셉터에서 클라이언트에 다시 요청이 발생하지 않는다.
         return $api.request(originalRequest);
       } catch (e) {
         console.log({ e });

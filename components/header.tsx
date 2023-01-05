@@ -12,11 +12,9 @@ export default function Header() {
       <div className={styles.signedInStatus}>
         {
           <>
-            <span className={styles.notSignedInText}>
-              If you want to sign in, please click the 'sign in' button
-            </span>
+            <span className={styles.notSignedInText}></span>
             <a
-              href={`http://localhost:3001/api/auth/google/login`}
+              href="/login"
               className={styles.buttonPrimary}
               onClick={(callApi) => {}}
             >
@@ -37,7 +35,7 @@ export default function Header() {
             <Link href="/protected">Protected</Link>
           </li>
           <li className={styles.navItem}>
-            <Link href="/api-example">API</Link>
+            <Link href="/api">API</Link>
           </li>
           <li className={styles.navItem}>
             <Link href="/profile">Profile</Link>
