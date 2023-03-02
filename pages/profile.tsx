@@ -22,7 +22,7 @@ export default function ProfilePage({ data }: { data: any }) {
       <h1>Profile</h1>
       <p>Name: {data.username}</p>
       <p>Email: {data.email}</p>
-      <p>date of joining : {data.createdAt}</p>
+      <p>Date of joining : {data.createdAt}</p>
     </Layout>
   );
 }
