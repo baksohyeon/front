@@ -4,7 +4,7 @@ import { isDataView } from "util/types";
 import Layout from "../components/layout";
 import { getUserProfile } from "../lib/auth";
 
-export async function getServerSideProps({ req }) {
+export async function getServerSideProps({ req }: any) {
   const res = await axios.get("http://localhost:3001/api/auth/google/profile", {
     withCredentials: true,
     headers: {
