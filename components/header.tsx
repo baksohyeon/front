@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { GoogleButton } from "./google-login";
 import styles from "./header.module.css";
 
 export default function Header() {
@@ -9,20 +9,7 @@ export default function Header() {
       <noscript>
         <style>{`.nojs-show { opacity: 1; top: 0; }`}</style>
       </noscript>
-      <div className={styles.signedInStatus}>
-        {
-          <>
-            <span className={styles.notSignedInText}></span>
-            <a
-              href="/login"
-              className={styles.buttonPrimary}
-              onClick={(callApi) => {}}
-            >
-              Sign in
-            </a>
-          </>
-        }
-      </div>
+      <GoogleButton />
       <nav>
         <ul className={styles.navItems}>
           <li className={styles.navItem}>
@@ -30,15 +17,6 @@ export default function Header() {
           </li>
           <li className={styles.navItem}>
             <Link href="/public">Public</Link>
-          </li>
-          <li className={styles.navItem}>
-            <Link href="/protected">Protected</Link>
-          </li>
-          <li className={styles.navItem}>
-            <Link href="/api">API</Link>
-          </li>
-          <li className={styles.navItem}>
-            <Link href="/profile">Profile</Link>
           </li>
         </ul>
       </nav>

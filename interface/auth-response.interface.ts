@@ -1,11 +1,31 @@
 import { userInterface } from "./user.interface";
 
 export interface AuthResponse {
-  message: string;
-  statusCode: number;
   user: {
-    accessToken: string;
-    refreshToken: string;
-    user: userInterface;
+    id: string;
+    email: string;
+    username: string;
+    createdAt: Date;
+    updatedAt: Date;
   };
+  message: string;
+  accessToken: string;
+  refreshToken: string;
+}
+export interface LoginResponse {
+  user: {
+    id: string;
+    email: string;
+    username: string;
+    createdAt: Date;
+    updatedAt: Date;
+  };
+  message: string;
+  accessToken: string;
+  refreshToken: string;
+}
+
+export interface User {
+  email: string;
+  username: string;
 }
