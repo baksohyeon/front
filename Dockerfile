@@ -6,8 +6,7 @@ WORKDIR /usr/src/app
 COPY package.json ./
 COPY yarn.lock ./
 
-# install dependencies
-RUN yarn install --immutable --immutable-cache --check-cache
+RUN yarn
 
 
 COPY . .
@@ -17,4 +16,5 @@ RUN yarn build
 # container port 3000
 EXPOSE 3000
 
+ENV NODE_ENV=production
 CMD ["yarn", "start"]
