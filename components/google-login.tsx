@@ -10,18 +10,12 @@ export const GoogleButton: React.FC = React.memo(({}) => {
 
   const onClickAuth = () => {
     try {
-      window.open(
-        `${API_URL}/auth/google/login`,
-        "Auth", // window.name - 나중에 같은 이름으로 window.open()을 호출하면 브라우저(IE 제외)에서 기존 창을 새 창으로 바꿉니다.
-        "width=500,height=500,status=yes,toolbar=no,menubar=no,location=no" // window.params
-      );
-      if (typeof window !== "undefined") {
-        window.addEventListener("message", (e) => {
-          if (e.origin !== API_URL) return;
-          const userData: any = JSON.parse(e.data);
-          console.log(userData);
-        });
-      }
+      // window.open(
+      //   `${API_URL}/auth/google/login`,
+      //   "Auth", // window.name - 나중에 같은 이름으로 window.open()을 호출하면 브라우저(IE 제외)에서 기존 창을 새 창으로 바꿉니다.
+      //   "width=500,height=500,status=yes,toolbar=no,menubar=no,location=no" // window.params
+      // );
+      window.location.href = `${API_URL}/auth/google/login`;
     } catch (error) {}
   };
 
@@ -29,7 +23,7 @@ export const GoogleButton: React.FC = React.memo(({}) => {
     if (codeSent) router.push({ pathname: "/" });
   }, [codeSent, router]);
 
-  console.log(codeSent);
+  console.log("codeSent", codeSent);
   return (
     <div className={styles.signedInStatus}>
       <span className={styles.notSignedInText}></span>
@@ -39,3 +33,4 @@ export const GoogleButton: React.FC = React.memo(({}) => {
     </div>
   );
 });
+GoogleButton.displayName = "GoogleButton";
